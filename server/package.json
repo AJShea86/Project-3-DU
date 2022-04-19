@@ -1,0 +1,17 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"description": "back-end server for Fetch app",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"watch": "nodemon server.js"
+	},
+	"dependencies": {
+		"express": "^4.17.3",
+		"mongoose": "^6.3.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	}
+}
