@@ -1,0 +1,1 @@
+const profileData = require('./ProfileData.json')

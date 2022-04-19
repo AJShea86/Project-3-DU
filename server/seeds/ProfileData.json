@@ -1,0 +1,50 @@
+[
+        {
+          "username":"brandi123",
+          "name": "Brandi",
+          "age": 2,
+          "pic": "",
+          "bio": "I love long walks on the beach, especially if there are seagulls we can chase.",
+          "location":"Denver"
+        },
+        {
+          "username": "chasedog",
+          "name": "Chase",
+          "age": 1,
+          "pic": "",
+          "bio": "I'm just looking for someone to eat with.",
+          "location":""
+        },
+        {
+          "username":"cocoa55",
+          "name": "Cocoa",
+          "age": 4,
+          "pic": "",
+          "bio": "I love cuddles and naps. I'd share my pillow with you.",
+          "location":""
+        },
+        {
+          "username":"charlie44",
+          "name": "Charlie",
+          "age": 5,
+          "pic": "",
+          "bio": "I'm looking for a leash-free relationship. Jumping in lakes and ponds is my favorite.",
+          "location":""
+        },
+        {
+          "username": "emily47",
+          "name": "Emily",
+          "age": 0.5,
+          "pic": "",
+          "bio": "I love chewing on furniture and pretending I'm tougher than I really am.",
+          "location":""
+        },
+        {
+          "username":"doug43",
+          "name": "Doug",
+          "age": 5,
+          "pic": "",
+          "bio": "If you like bad boys swipe left because I'm a good boy.",
+          "location":""
+        }
+      ]
