@@ -5,7 +5,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import PetsIcon from '@mui/icons-material/Pets';
 
 const NavBar = () => {
@@ -25,8 +24,9 @@ const NavBar = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Fetch
         </Typography>
-        <Button color="inherit">Login</Button>
-        <Button color="inherit">Register</Button>
+        <Button href='/' color='inherit'>Home</Button>
+        <Button href='/login' color="inherit">Login</Button>
+        <Button href='/register' color="inherit">Register</Button>
       </Toolbar>
     </AppBar>
   </Box>

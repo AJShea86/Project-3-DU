@@ -1,11 +1,10 @@
-import { imageListClasses } from '@mui/material'
-import Typed from 'react-typed'
 import React from 'react'
+import Typed from 'react-typed'
 
 const Home = () => {
   return (
     <div>
-    <Typed
+      <Typed
       style={{display: 'flex', justifyContent: 'center', marginTop: '50vh', fontSize: '50px'}}
         strings={['Welcome to Fetch !']}
         typeSpeed={40}

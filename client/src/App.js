@@ -1,25 +1,23 @@
 import NavBar from './components/NavBar';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Home from './components/Home';
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
 import './App.css';
 
 function App() {
   return (
-    <>
-    <NavBar/>
-    <div>
-      <Home/>
-    </div>
-    </>
-  //  <Router>
+  
+    <Router>
+     <NavBar/>
+      <Routes>
      
-  //    <Routes>
-     
-  //     <Route path='/' element='Hi'/>
-  //     <Route path='/what' element='Whats Up'/>
+       <Route path='/' element={<Home/>}/>
+       <Route path='/login' element={<Login/>}/>
+       <Route path='/register' element={<Register/>}/>
 
-  //    </Routes>
-  //  </Router>
+      </Routes>
+   </Router>
 
       
   
