@@ -15,5 +15,5 @@
 	"license": "MIT",
 	"devDependencies": {
 		"concurrently": "^7.1.0"
+  },
 	}
-}
