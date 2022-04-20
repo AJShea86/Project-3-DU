@@ -34,7 +34,7 @@ const resolvers = {
 		},
 		removeUser: async (parent, args, context) => {
 			if (context.user) {
-				const updatedUser = await User.findOneByIdAndDelete();
+				const updatedUser = await User.findOneByIdAndDelete(context.user._id);
 				console.log(updatedUser);
 				return updatedUser;
 			}

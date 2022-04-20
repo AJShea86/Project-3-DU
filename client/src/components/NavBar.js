@@ -10,7 +10,7 @@ import PetsIcon from '@mui/icons-material/Pets';
 const NavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static" style={{backgroundColor: 'goldenrod'}}>
+    <AppBar position="static" style={{backgroundColor: 'black'}}>
       <Toolbar>
         <IconButton
           size="large"
