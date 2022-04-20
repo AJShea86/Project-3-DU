@@ -39,7 +39,7 @@ return (
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'goldenrod' }}>
+        <Avatar sx={{ m: 1, bgcolor: 'black' }}>
           <PetsIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
