@@ -1,9 +1,11 @@
 import React from 'react'
+import { SliderData } from '../components/SliderData';
+import  ImageSlider  from '../components/ImageSlider';
 
 const Main = () => {
-  return (
-    <div>Main</div>
-  )
+
+    return <ImageSlider slides={SliderData}/>
+    
 }
 
 export default Main
