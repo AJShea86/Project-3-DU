@@ -15,8 +15,8 @@ const resolvers = {
 		},
 	},
 	Mutation: {
-		login: async (parent, { username, password }) => {
-			const user = await User.findOne({ username });
+		login: async (parent, { email, password }) => {
+			const user = await User.findOne({ email });
 			if (!user) {
 				throw new AuthenticationError("You are Not logged in!");
 			}
@@ -34,11 +34,7 @@ const resolvers = {
 		},
 		removeUser: async (parent, args, context) => {
 			if (context.user) {
-				const updatedUser = await User.findOneByIdAndUpdate(
-					{ _id: context.user },
-					{ $pull: { saveUser: args.input } },
-					{ new: true }
-				);
+				const updatedUser = await User.findOneByIdAndDelete();
 				console.log(updatedUser);
 				return updatedUser;
 			}
