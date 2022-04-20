@@ -9,11 +9,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+// import { User } from "../../../server/models";
+import { useQuery } from "@apollo/react-hooks";
 
 
-const ImageSlider = ({ slides }) => {
+const ImageSlider = () => {
   const [current, setCurrent] = useState(0);
-  const length = slides.length;
+  const  [length, setLenght] = useState(0);
+  const {loading, error, data} = useQuery("")
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -23,16 +26,16 @@ const ImageSlider = ({ slides }) => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
-    return null;
-  }
 
+  // if (!Array.isArray(User) || User.length <= 0) {
+  //   return null;
+  // 
   return (
     <section className="slider">
-      <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-      <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
+      {/* <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
+      <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} /> */}
 
-      {SliderData.map((slide, index) => {
+      {data.map((User, index) => {
         return (
           <div
             className={index === current ? "slide active" : "slide"}
@@ -48,7 +51,7 @@ const ImageSlider = ({ slides }) => {
                     component="img"
                     alt="green iguana"
                     height="140"
-                    image={slide.image}
+                    image={User.pic}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -79,5 +82,6 @@ const ImageSlider = ({ slides }) => {
     </section>
   );
 };
+
 
 export default ImageSlider;
