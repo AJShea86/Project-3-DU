@@ -5,12 +5,14 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import './App.css';
 import Main from './pages/Main';
+import Footer from './components/Footer';
 
 function App() {
   return (
-  
+
     <Router>
      <NavBar/>
+     <Footer/>
       <Routes>
      
        <Route path='/' element={<Home/>}/>
@@ -24,8 +26,9 @@ function App() {
 
       </Routes>
    </Router>
+  
 
-      
+   
   
   );
 }

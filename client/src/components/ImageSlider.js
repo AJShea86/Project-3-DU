@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SliderData } from "./SliderData";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
+
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -25,9 +26,10 @@ const ImageSlider = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
+
   // if (!Array.isArray(User) || User.length <= 0) {
   //   return null;
-  // }
+  // 
   return (
     <section className="slider">
       {/* <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
