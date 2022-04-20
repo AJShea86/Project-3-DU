@@ -34,11 +34,7 @@ const resolvers = {
 		},
 		removeUser: async (parent, args, context) => {
 			if (context.user) {
-				const updatedUser = await User.findOneByIdAndUpdate(
-					{ _id: context.user },
-					{ $pull: { saveUser: args.input } },
-					{ new: true }
-				);
+				const updatedUser = await User.findOneByIdAndDelete(context.user._id);
 				console.log(updatedUser);
 				return updatedUser;
 			}
