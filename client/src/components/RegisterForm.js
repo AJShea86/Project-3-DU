@@ -36,7 +36,7 @@ function LoginForm() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 3,
+            marginTop: 1,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -115,7 +115,7 @@ function LoginForm() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 1, mb: 3 }}
             >
               Register
             </Button>
