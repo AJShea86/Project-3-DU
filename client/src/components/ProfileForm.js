@@ -11,22 +11,21 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import PetsIcon from "@mui/icons-material/Pets";
-
-import React from "react";
+import TextArea from "@mui/material/TextareaAutosize";
+import React, { Profiler } from "react";
+import "../App.css";
 
 const theme = createTheme();
-function LoginForm() {
+function ProfileForm() {
   const handleSubmit = (event) => {
-      
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-        firstName: data.get('firstName'),
-        lastName: data.get('lastName'),
-        location: data.get('location'),
-         email: data.get("email"),
-        password: data.get("password"),
-
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
+      location: data.get("location"),
+      email: data.get("email"),
+      password: data.get("password"),
     });
   };
 
@@ -46,7 +45,7 @@ function LoginForm() {
             <PetsIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Register
+            Profile
           </Typography>
           <Box
             component="form"
@@ -58,21 +57,20 @@ function LoginForm() {
               margin="normal"
               required
               fullWidth
-              id="firstName"
-              label="First Name"
-              name="firstName"
-              autoComplete="firstName"
+              id="name"
+              label="Name"
+              name="name"
+              autoComplete="name"
               autoFocus
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
-              autoComplete="lastName"
-              
+              id="age"
+              label="Age"
+              name="age"
+              autoComplete="age"
             />
 
             <TextField
@@ -83,43 +81,32 @@ function LoginForm() {
               label="Location"
               name="location"
               autoComplete="location"
-              
             />
 
-            <TextField
+            <TextArea
+              className="textArea"
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              
+              id="bio"
+              label="Biography"
+              name="bio"
+              autoComplete="bio"
             />
 
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 1, mb: 3 }}
             >
-              Register
+              Submit
             </Button>
-            <Grid container>
+            {/* <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
@@ -130,7 +117,7 @@ function LoginForm() {
                   {"Already have an account? Sign in"}
                 </Link>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Box>
         </Box>
       </Container>
@@ -138,4 +125,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default ProfileForm;
