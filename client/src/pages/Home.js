@@ -3,10 +3,12 @@ import Typed from "react-typed";
 
 const Home = () => {
   const bgStyle = {
-    backgroundPosition: "center",
+    backgroundPosition: "0% 65%",
     backgroundSize: "cover",
-    height: "92vh",
-    width: "100vw",
+    position: 'absolute',
+    height: "100%",
+    width: "100%",
+    objectFit: 'cover',
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -16,7 +18,7 @@ const Home = () => {
     <div style={bgStyle}>
       <Typed
         style={{
-          marginBottom: '305px',
+          marginBottom: '450px',
           fontSize: "50px",
         }}
         strings={["Welcome to Fetch !"]}
