@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SliderData } from "./SliderData";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
+
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -26,16 +27,27 @@ import { GET_USERS } from "../utils/queries";
 //     setCurrent(current === 0 ? length - 1 : current - 1);
 //   };
 
+
   // if (!Array.isArray(User) || User.length <= 0) {
   //   return null;
+
   // }
   function Users({GET_USERS}) {
     const { loading, error, data } = useQuery(GET_USERS);
     if(loading) return `Loading`;
     if(error) return `Error!`
 
+  // 
+  // return (
+    // <section className="slider">
+      // {/* <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
+      // <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} /> */}
+
+
     return (
+      <div>
       {data}
+      </div>
     )
 
   }

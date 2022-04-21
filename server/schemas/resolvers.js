@@ -15,6 +15,7 @@ const resolvers = {
 		},
 		users: async () => {
 			return await User.find({});
+<<<<<<< HEAD
 		}
 	},
 	Mutation: {
@@ -24,15 +25,31 @@ const resolvers = {
 			return { token, user }
 		},
 
+=======
+		},
+	},
+	Mutation: {
+		addUser: async (parent, { email, password }) => {
+			const user = await User.create({ email, password });
+			const token = signToken(user);
+
+			return { token, user };
+		},
+>>>>>>> 555eef568bbbcfe1fa8999910be4889018bd1781
 		login: async (parent, { email, password }) => {
 			const user = await User.findOne({ email });
 			if (!user) {
-				throw new AuthenticationError("You are Not logged in!");
+				throw new AuthenticationError(
+					"No profile found. Try another email or sign up!"
+				);
 			}
-			const pw = await User.isCorrectPassword(password);
+
+			const pw = await user.isCorrectPassword(password);
+
 			if (!pw) {
-				throw new AuthenticationError("Password is incorrect");
+				throw new AuthenticationError("Password is incorrect!");
 			}
+
 			const token = signToken(user);
 			return { token, user };
 		},

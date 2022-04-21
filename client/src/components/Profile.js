@@ -54,7 +54,7 @@ function LoginForm() {
             noValidate
             sx={{ mt: 1 }}
           >
-            {/* <TextField
+            <TextField
               margin="normal"
               required
               fullWidth
@@ -73,9 +73,9 @@ function LoginForm() {
               name="lastName"
               autoComplete="lastName"
               
-            /> */}
+            />
 
-            {/* <TextField
+            <TextField
               margin="normal"
               required
               fullWidth
@@ -84,7 +84,7 @@ function LoginForm() {
               name="location"
               autoComplete="location"
               
-            /> */}
+            />
 
             <TextField
               margin="normal"
