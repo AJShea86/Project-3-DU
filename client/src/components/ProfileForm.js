@@ -12,22 +12,24 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import PetsIcon from "@mui/icons-material/Pets";
 import TextArea from "@mui/material/TextareaAutosize";
-import React, { Profiler } from "react";
+import React, { useState, Profiler } from "react";
 import "../App.css";
 
 const theme = createTheme();
 function ProfileForm() {
+  const [selectedFile, setSelectedFile] = useState(null);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
+      name: data.get("name"),
+      age: data.get("age"),
       location: data.get("location"),
-      email: data.get("email"),
-      password: data.get("password"),
+      bio: data.get("bio"),
+      image: selectedFile,
     });
   };
+  const fileSelectedHandler = (event) => setSelectedFile(event.target.files[0]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -82,22 +84,21 @@ function ProfileForm() {
               name="location"
               autoComplete="location"
             />
-
             <TextArea
+              minRows={6}
               className="textArea"
               margin="normal"
               required
-              fullWidth
               id="bio"
               label="Biography"
+              placeholder="Biography"
               name="bio"
               autoComplete="bio"
             />
+            <div className="">
+              <input type="file" onChange={fileSelectedHandler} />
+            </div>
 
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
             <Button
               type="submit"
               fullWidth
@@ -106,18 +107,6 @@ function ProfileForm() {
             >
               Submit
             </Button>
-            {/* <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/login" variant="body2">
-                  {"Already have an account? Sign in"}
-                </Link>
-              </Grid>
-            </Grid> */}
           </Box>
         </Box>
       </Container>
