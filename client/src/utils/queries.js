@@ -1,8 +1,8 @@
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 
-export const QUERY_USERS = gql`
-  query allUsers {
+export const GET_USERS = gql`
+  query GetUsers {
     user {
       _id
       name
