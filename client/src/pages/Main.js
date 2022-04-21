@@ -8,7 +8,7 @@ const Main = () => {
   return(
   <div>
     <ProfileButton />
-    <ImageSlider slides={SliderData} />
+    <ImageSlider />
   </div>
   )
 };
