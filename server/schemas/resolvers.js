@@ -13,8 +13,17 @@ const resolvers = {
 			}
 			throw new AuthenticationError("You are Not logged in!");
 		},
+		users: async () => {
+			return await User.find({});
+		}
 	},
 	Mutation: {
+		addUser: async(parent, { email, password}) => {
+			const user = await User.create({email, password});
+			const token = signToken(user);
+			return { token, user }
+		},
+
 		login: async (parent, { email, password }) => {
 			const user = await User.findOne({ email });
 			if (!user) {
@@ -27,19 +36,14 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		},
-		addUser: async (parent, args) => {
-			const user = await User.create(args);
-			const token = signToken(user);
-			return { token, user };
-		},
-		removeUser: async (parent, args, context) => {
-			if (context.user) {
-				const updatedUser = await User.findOneByIdAndDelete(context.user._id);
-				console.log(updatedUser);
-				return updatedUser;
-			}
-			throw new AuthenticationError("You are Not logged in!");
-		},
+		// removeUser: async (parent, args, context) => {
+		// 	if (context.user) {
+		// 		const updatedUser = await User.findOneByIdAndDelete(context.user._id);
+		// 		console.log(updatedUser);
+		// 		return updatedUser;
+		// 	}
+		// 	throw new AuthenticationError("You are Not logged in!");
+		// },
 	},
 };
 
