@@ -32,23 +32,12 @@ import { GET_USERS } from "../utils/queries";
   //   return null;
 
   // }
-  function Users({GET_USERS}) {
-    const { loading, error, data } = useQuery(GET_USERS);
-    if(loading) return `Loading`;
-    if(error) return `Error!`
-
-  // 
-  // return (
-    // <section className="slider">
-      // {/* <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-      // <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} /> */}
+//   function Users({GET_USERS}) {
+//     const { loading, error, data } = useQuery(GET_USERS);
+//     if(loading) return `Loading`;
+//     if(error) return `Error!`
 
 
-    return (
-      <div>
-      {data}
-      </div>
-    )
 
   }
 
@@ -109,3 +98,4 @@ import { GET_USERS } from "../utils/queries";
 
 
 export default Users;
+
