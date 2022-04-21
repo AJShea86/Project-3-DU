@@ -1,11 +1,16 @@
-import React from 'react'
-import { SliderData } from '../components/SliderData';
-import  ImageSlider  from '../components/ImageSlider';
+import React from "react";
+import { SliderData } from "../components/SliderData";
+import ImageSlider from "../components/ImageSlider";
+import ProfileButton from "../components/ProfileButton";
+
 
 const Main = () => {
+  return(
+  <div>
+    <ProfileButton />
+    <ImageSlider slides={SliderData} />
+  </div>
+  )
+};
 
-    return <ImageSlider slides={SliderData}/>
-    
-}
-
-export default Main
+export default Main;

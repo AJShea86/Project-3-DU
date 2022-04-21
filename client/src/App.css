@@ -49,3 +49,7 @@
     transition-duration: 1s;
     transform: scale(1.08);
   }
+
+.textArea{
+  width: 100%;
+}

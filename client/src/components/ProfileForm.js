@@ -11,24 +11,25 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import PetsIcon from "@mui/icons-material/Pets";
-
-import React from "react";
+import TextArea from "@mui/material/TextareaAutosize";
+import React, { useState, Profiler } from "react";
+import "../App.css";
 
 const theme = createTheme();
-function LoginForm() {
+function ProfileForm() {
+  const [selectedFile, setSelectedFile] = useState(null);
   const handleSubmit = (event) => {
-      
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-        firstName: data.get('firstName'),
-        lastName: data.get('lastName'),
-        location: data.get('location'),
-         email: data.get("email"),
-        password: data.get("password"),
-
+      name: data.get("name"),
+      age: data.get("age"),
+      location: data.get("location"),
+      bio: data.get("bio"),
+      image: selectedFile,
     });
   };
+  const fileSelectedHandler = (event) => setSelectedFile(event.target.files[0]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -46,7 +47,7 @@ function LoginForm() {
             <PetsIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Register
+            Profile
           </Typography>
           <Box
             component="form"
@@ -58,21 +59,20 @@ function LoginForm() {
               margin="normal"
               required
               fullWidth
-              id="firstName"
-              label="First Name"
-              name="firstName"
-              autoComplete="firstName"
+              id="name"
+              label="Name"
+              name="name"
+              autoComplete="name"
               autoFocus
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
-              autoComplete="lastName"
-              
+              id="age"
+              label="Age"
+              name="age"
+              autoComplete="age"
             />
 
             <TextField
@@ -83,54 +83,30 @@ function LoginForm() {
               label="Location"
               name="location"
               autoComplete="location"
-              
             />
-
-            <TextField
+            <TextArea
+              minRows={6}
+              className="textArea"
               margin="normal"
               required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              
+              id="bio"
+              label="Biography"
+              placeholder="Biography"
+              name="bio"
+              autoComplete="bio"
             />
+            <div className="">
+              <input type="file" onChange={fileSelectedHandler} />
+            </div>
 
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 1, mb: 3 }}
             >
-              Register
+              Submit
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/login" variant="body2">
-                  {"Already have an account? Sign in"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>
@@ -138,4 +114,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default ProfileForm;
