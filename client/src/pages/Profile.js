@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProfileForm from "../components/ProfileForm";
 import '../App.css'
-import axios from 'axios'
+// import axios from 'axios'
 
 
 class App extends Component {
@@ -19,10 +19,10 @@ class App extends Component {
 fileUploadHandler = () => {
   const fd = new FormData();
   fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
-  axios.post('')
-  .then(res => {
-    console.log(res)
-  })
+  // axios.post('')
+  // .then(res => {
+  //   console.log(res)
+  // })
 
 
 }

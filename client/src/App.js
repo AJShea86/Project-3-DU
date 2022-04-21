@@ -7,11 +7,13 @@ import "./App.css";
 import Main from "./pages/Main";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
+import ProfileButton from "./components/ProfileButton";
 
 function App() {
   return (
     <Router>
       <NavBar />
+      <ProfileButton />
       <Footer />
       <Routes>
         <Route path="/" element={<Home />} />
