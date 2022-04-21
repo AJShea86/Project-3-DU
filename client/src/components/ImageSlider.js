@@ -1,20 +1,24 @@
-import React, { useState } from "react";
-import { SliderData } from "./SliderData";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
-
-
+import React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 // import { User } from "../../../server/models";
 import { useQuery } from "@apollo/client";
 import { GET_USERS } from "../utils/queries";
+//card
+  const ImageSlider = () => {
+    const { loading, data } = useQuery(GET_USERS);
+    const users = data?.users || [];
+        
+          <Card>
+            <div>
+                <p>
+                  {users}
+                </p>
+            </div>
+            </Card> 
+      }
 
 
- const ImageSlider = () => {
+//  const ImageSlider = () => {
 //   const [current, setCurrent] = useState(0);
 //   const  [length, setLenght] = useState(0);
 //   const {loading, error, data} = useQuery("")
@@ -94,7 +98,7 @@ import { GET_USERS } from "../utils/queries";
 //     </section>
 //   );
 // };
- }
+//  }
 
 
 export default ImageSlider
