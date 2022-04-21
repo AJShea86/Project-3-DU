@@ -10,8 +10,8 @@ const ProfileButton = () => {
     <div className='header'>
 
 
-      <IconButton>
-      <PersonIcon fontSize='large' className='header__icon' />
+      <IconButton href='/profile'>
+      <PersonIcon  fontSize='large' className='header__icon' />
       </IconButton>
 
       <IconButton>

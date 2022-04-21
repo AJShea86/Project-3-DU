@@ -39,7 +39,7 @@ const ImageSlider = ({ slides }) => {
             key={index}
           >
             {index === current && (
-              <div>
+              <div style={{marginBottom:'100px'}} >
                 {/* <img src={slide.image} alt="dog images" className="image" /> */}
 
                 {/* <div>hello</div> */}
@@ -49,6 +49,8 @@ const ImageSlider = ({ slides }) => {
                     alt="green iguana"
                     height="140"
                     image={slide.image}
+                    marginBottom="100px"
+
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
