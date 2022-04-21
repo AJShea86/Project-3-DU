@@ -6,15 +6,13 @@ import Register from './pages/Register'
 import './App.css';
 import Main from './pages/Main';
 import Footer from './components/Footer';
-
+import { setContext } from '@apollo/client/link/context';
 import React from 'react';
-import { render } from "react-dom";
-import { ApolloProvider } from '@apollo/client';
 import { 
   ApolloClient, 
-  gql,
-  InMemoryCache,
-  useQuery, 
+  InMemoryCache, 
+  ApolloProvider,
+  createHttpLink,
 } from "@apollo/client";
 
 const httpLink = createHttpLink({
@@ -35,7 +33,7 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 function App() {
