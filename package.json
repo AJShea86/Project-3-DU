@@ -15,14 +15,5 @@
 	"license": "MIT",
 	"devDependencies": {
 		"concurrently": "^7.1.0"
-	},
-	"dependencies": {
-		"@apollo/react-hooks": "^4.0.0",
-		"apollo-boost": "^0.4.9",
-		"graphql": "^15.8.0",
-		"jsonwebtoken": "^8.5.1",
-		"react": "^18.0.0",
-		"react-dom": "^18.0.0",
-		"react-scripts": "^5.0.1"
 	}
 }
