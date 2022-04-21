@@ -14,7 +14,7 @@ import { useQuery } from "@apollo/client";
 import { GET_USERS } from "../utils/queries";
 
 
-// const ImageSlider = () => {
+ const ImageSlider = () => {
 //   const [current, setCurrent] = useState(0);
 //   const  [length, setLenght] = useState(0);
 //   const {loading, error, data} = useQuery("")
@@ -39,7 +39,7 @@ import { GET_USERS } from "../utils/queries";
 
 
 
-  }
+  
 
   
 //   return (
@@ -94,8 +94,7 @@ import { GET_USERS } from "../utils/queries";
 //     </section>
 //   );
 // };
+ }
 
 
-
-export default Users;
-
+export default ImageSlider
