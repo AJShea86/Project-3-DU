@@ -29,7 +29,7 @@ const theme = createTheme();
     password: '',
   })
 
-  const [addUser,{ error, data}] = useMutation(LOGIN)
+  const [login,{ error, data}] = useMutation(LOGIN)
 
   const handleChange = (event) => {
     const {email,name, value} = event.target
@@ -53,11 +53,11 @@ const handleSubmit = async (event) => {
     password: data.get('password'),
   });
   try {
-    const { data }  = await addUser({
+    const { data }  = await login({
       variables: { ...formState },
     });
-
-    Auth.login(data.addUser.token);
+console.log(data)
+    Auth.login(data.login.token);
   } catch (e) {
     console.error(e);
   }

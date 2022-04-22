@@ -11,6 +11,7 @@ import{ FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 
  const ImageSlider = ({User}) => {
     const { loading, data } = useQuery(GET_USERS);
+    console.log(data)
     const users = data?.users || [];
 
     const [current, setCurrent] = useState(0);
@@ -25,10 +26,10 @@ import{ FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
     };
 
 
-    if (!Array.isArray(users) || users.length <= 0) {
-      return null;
+    // if (!Array.isArray(users) || users.length <= 0) {
+    //   return null;
 
-    }
+    // }
 
   return (
     <section className="slider">
