@@ -56,12 +56,10 @@ const handleSubmit = async (event) => {
     const { data }  = await login({
       variables: { ...formState },
     });
-
-    console.log(data);
-
+console.log(data)
     Auth.login(data.login.token);
   } catch (e) {
-    console.log(JSON.stringify(e, null, 2));
+    console.error(e);
   }
 };
 

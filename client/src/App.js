@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 import { setContext } from '@apollo/client/link/context';
 import Matches from './pages/Matches';
 import React from 'react';
-import Profile from "./pages/Profile"
 import { 
   ApolloClient, 
   InMemoryCache, 
@@ -49,10 +48,8 @@ function App() {
        <Route path='/' element={<Home/>}/>
        <Route path='/login' element={<Login/>}/>
        <Route path='/register' element={<Register/>}/>
-       <Route path='/main' element={<Main/>}/
-       <Route path ='/profile' element={<Profile/>}/
+       <Route path='/main' element={<Main/>}/>
        <Route path='/matches' element={<Matches/>}/>
-
 
 
       </Routes>
