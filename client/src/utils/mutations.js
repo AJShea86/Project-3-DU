@@ -19,12 +19,10 @@ mutation login(
   $password: String!
 ){
   login(
-    UserInput: {
       email: $email
       password: $password
-    }
   ){
-    id email password token
+    token
   }
 }
 `
