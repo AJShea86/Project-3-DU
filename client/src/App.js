@@ -7,6 +7,7 @@ import './App.css';
 import Main from './pages/Main';
 import Footer from './components/Footer';
 import { setContext } from '@apollo/client/link/context';
+import Matches from './pages/Matches';
 import React from 'react';
 import { 
   ApolloClient, 
@@ -48,6 +49,8 @@ function App() {
        <Route path='/login' element={<Login/>}/>
        <Route path='/register' element={<Register/>}/>
        <Route path='/main' element={<Main/>}/>
+       <Route path='/matches' element={<Matches/>}/>
+
 
       </Routes>
    </Router>
