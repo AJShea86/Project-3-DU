@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import Card from "@mui/material/Card";
 import { CardActions, CardMedia } from "@mui/material";
 import { CardContent } from "@mui/material";
@@ -6,9 +6,10 @@ import { Button } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { GET_USERS } from "../utils/queries";
 import { Typography } from "@mui/material";
+import{ FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 
 
- const ImageSlider = () => {
+ const ImageSlider = ({User}) => {
     const { loading, data } = useQuery(GET_USERS);
     const users = data?.users || [];
 
@@ -24,7 +25,7 @@ import { Typography } from "@mui/material";
     };
 
 
-    if (!Array.isArray(data) || data.length <= 0) {
+    if (!Array.isArray(users) || users.length <= 0) {
       return null;
 
     }
@@ -32,17 +33,18 @@ import { Typography } from "@mui/material";
   return (
     <section className="slider">
        <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-      <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} /> 
+      <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
 
       {users.map((User, index) => {
+        console.log(users[1])
         return (
           <div
             className={index === current ? "slide active" : "slide"}
             key={index}
           >
-             {index === current && ( 
+              {index === current && (
               <div>
-                <img src={User.pic} alt="dog images" className="image" />
+                <img src="./pic5.jpg" alt="dog images" className="image" />
                 <Card sx={{ maxWidth: 345 }}>
                   <CardContent>
                     
@@ -67,8 +69,9 @@ import { Typography } from "@mui/material";
                   </CardActions>
                 </Card>
               </div>
-             );
+              )}
           </div>
+        );
       })} 
     </section>//keepthis
   );
