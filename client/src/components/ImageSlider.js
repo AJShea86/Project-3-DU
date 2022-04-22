@@ -47,12 +47,12 @@ const ImageSlider = () => {
               {index === current && (
               <div>
                 <Card sx={{ maxWidth: 345 }}>
-                {/* <CardMedia
+                <CardMedia
                     component="img"
                     alt="dog photo"
                     height="140"
-                    image={'../pic5.jpg'}//need to put user pic here
-                  /> */}
+                    image={User.pic}//need to put user pic here
+                  />
                   <CardContent>
                     
                     <Typography gutterBottom variant="h5" component="div">
