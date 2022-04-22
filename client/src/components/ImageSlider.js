@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useState} from "react";
 import Card from "@mui/material/Card";
 import { CardActions, CardMedia } from "@mui/material";
 import { CardContent } from "@mui/material";
@@ -8,12 +8,11 @@ import { GET_USERS } from "../utils/queries";
 import { Typography } from "@mui/material";
 import PetsIcon from '@mui/icons-material/Pets';
 
- const ImageSlider = () => {
-    const { loading, data:users, error } = useQuery(GET_USERS);
-    useEffect(()=> {
-      console.log(users);
-      console.log(error, loading)
-    }, [users, error, loading])
+
+ const ImageSlider = ({User}) => {
+    const { loading, data } = useQuery(GET_USERS);
+    console.log(data)
+    const users = data?.users || [];
 
     const [current, setCurrent] = useState(0);
     const  [length, setLength] = useState(0);
@@ -26,12 +25,19 @@ import PetsIcon from '@mui/icons-material/Pets';
       setCurrent(current === 0 ? length - 1 : current - 1);
     };
 
+
+    // if (!Array.isArray(users) || users.length <= 0) {
+    //   return null;
+
+    // }
+
   return (
     <section className="slider">
       <PetsIcon  className="right-arrow" onClick={nextSlide} fontSize='large'style={{verticalAlign:"middle", transform:'rotate(90deg)'}}/>
       <PetsIcon  className="left-arrow" onClick={prevSlide} fontSize='large'style={{verticalAlign:"middle", transform:'rotate(270deg)'}}/>
 
-      {users?.users.map((User, index) => {
+      {users.map((User, index) => {
+        console.log(users[1])
         return (
           <div
             className={index === current ? "slide active" : "slide"}
@@ -39,7 +45,7 @@ import PetsIcon from '@mui/icons-material/Pets';
           >
               {index === current && (
               <div>
-                <img  alt="dog images" className="image" />
+                <img src="./pic5.jpg" alt="dog images" className="image" />
                 <Card sx={{ maxWidth: 345 }}>
                 {/* <CardMedia
                     component="img"
