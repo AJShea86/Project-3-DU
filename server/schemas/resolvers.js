@@ -7,6 +7,10 @@ const resolvers = {
 		users: async () => {
 			return await User.find();
 		},
+		getUser: async (parent, { _id }) => {
+			const user = await User.findById(_id)
+			return user
+		},
 		me: async (parent, args, context) => {
 			if (context.user) {
 				const userData = await User.findOne({ _id: context.user.id }).select(
@@ -19,10 +23,14 @@ const resolvers = {
 	},
 	Mutation: {
 		addUser: async (parent, { email, password }) => {
-			const user = await User.create({ email, password });
+			const user = await User.create({ email, password, name: '🐶 New User!' });
 			const token = signToken(user);
 
 			return { token, user };
+		},
+		updateUser: async(parent, {name, age, location, bio, _id}) => {
+			const user = await User.findOneAndUpdate({ _id }, { $set: { name, age, location, bio } })
+			return 'true';
 		},
 		login: async (parent, { email, password }) => {
 			const user = await User.findOne({ email });

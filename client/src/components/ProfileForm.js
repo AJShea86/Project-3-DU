@@ -12,12 +12,40 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import PetsIcon from "@mui/icons-material/Pets";
 import TextArea from "@mui/material/TextareaAutosize";
-import React, { useState, Profiler } from "react";
+import React, { useState, Profiler, useEffect } from "react";
 import "../App.css";
+import { useMutation, useQuery } from "@apollo/client";
+import { UPDATE_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
+import { GET_USER } from "../utils/queries";
 
 const theme = createTheme();
 function ProfileForm() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [formState, setFormState] = useState({
+    name: '',
+    age: '',
+    location: '',
+    bio: '',
+  })
+
+  const { loading, error: userError, data: userData} = useQuery(GET_USER, {
+    variables: { _id: Auth.getCurrentUser() }
+  })
+
+  const [userName, setUserName] = useState('')
+  const [userAge, setUserAge] = useState('')
+  const [userLocation, setUserLocation] =useState('')
+  const [userBio, setUserBio] =useState('')
+
+  useEffect(() => {
+    setUserName(userData?.getUser?.name)
+    setUserAge(userData?.getUser?.age)
+  }, [userData])
+
+  console.log(userData)
+  const [updateUser, { error, data}] = useMutation(UPDATE_USER)
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -28,6 +56,33 @@ function ProfileForm() {
       bio: data.get("bio"),
       image: selectedFile,
     });
+    const formData = {
+      name: data.get("name"),
+      age: data.get("age"),
+      location: data.get("location"),
+      bio: data.get("bio"),
+      image: selectedFile,
+    }
+    setFormState({
+      ...formState,
+      ...formData
+    })
+    console.log({
+      _id: Auth.getCurrentUser(),
+      name: userName,
+      age: userAge,
+      location: userLocation,
+      bio: userBio
+    })
+    updateUser({
+     variables: {
+      _id: Auth.getCurrentUser(),
+      name: userName,
+      age: userAge,
+      location: userLocation,
+      bio: userBio
+     }
+    })
   };
   const fileSelectedHandler = (event) => setSelectedFile(event.target.files[0]);
 
@@ -35,7 +90,7 @@ function ProfileForm() {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
+        { loading ? <p>Loading...soryy :(</p> : <Box
           sx={{
             marginTop: 1,
             display: "flex",
@@ -56,6 +111,8 @@ function ProfileForm() {
             sx={{ mt: 1 }}
           >
             <TextField
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
               margin="normal"
               required
               fullWidth
@@ -66,6 +123,8 @@ function ProfileForm() {
               autoFocus
             />
             <TextField
+              value={userAge}
+              onChange={(e) => setUserAge(e.target.value)}
               margin="normal"
               required
               fullWidth
@@ -76,6 +135,8 @@ function ProfileForm() {
             />
 
             <TextField
+            value={userLocation}
+            onChange={(e) => setUserLocation(e.target.value)}
               margin="normal"
               required
               fullWidth
@@ -85,6 +146,8 @@ function ProfileForm() {
               autoComplete="location"
             />
             <TextArea
+              value={userBio}
+              onChange={(e) => setUserBio(e.target.value)}
               minRows={6}
               className="textArea"
               margin="normal"
@@ -108,7 +171,7 @@ function ProfileForm() {
               Submit
             </Button>
           </Box>
-        </Box>
+        </Box> }
       </Container>
     </ThemeProvider>
   );

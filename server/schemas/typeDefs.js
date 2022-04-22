@@ -15,13 +15,18 @@ const typeDefs = gql`
 		token: ID!
 		user: User
 	}
+	type UpdateUserResponse { 
+		response: String
+	}
 	type Query {
 		me: User
+		getUser(_id: ID!): User
 		users: [User]
 	}
 	type Mutation {
 		login(email: String!, password: String!): Auth
 		addUser(email: String!, password: String!): Auth
+		updateUser(_id: ID!, name: String, age: String): UpdateUserResponse
 		# removeUser(_id: ID!): User
 	}
 `;
