@@ -57,7 +57,7 @@ const handleSubmit = async (event) => {
       variables: { ...formState },
     });
 console.log(data)
-    Auth.login(data.login.token);
+    Auth.login(data.login.token, data.login.user._id);
   } catch (e) {
     console.log(JSON.stringify(e, null, 2));
   }
@@ -142,4 +142,4 @@ return (
   )
 }
 
-export default LoginForm
+export default LoginForm;

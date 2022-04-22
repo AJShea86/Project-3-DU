@@ -53,7 +53,6 @@ function App() {
        <Route path ='/profile' element={<Profile/>}/>
        <Route path='/matches' element={<Matches/>}/>
 
-
       </Routes>
    </Router>
   </ApolloProvider>

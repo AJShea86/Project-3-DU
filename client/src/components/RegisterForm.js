@@ -59,7 +59,7 @@ function LoginForm() {
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token);
+      Auth.login(data.addUser.token, data.addUser.user._id);
     } catch (e) {
       console.error(e);
     }
