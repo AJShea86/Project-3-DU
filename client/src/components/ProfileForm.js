@@ -163,6 +163,7 @@ function ProfileForm() {
             </div>
 
             <Button
+              href='/main'
               type="submit"
               fullWidth
               variant="contained"
