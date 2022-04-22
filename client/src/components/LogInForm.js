@@ -59,7 +59,7 @@ const handleSubmit = async (event) => {
 console.log(data)
     Auth.login(data.login.token);
   } catch (e) {
-    console.error(e);
+    console.log(JSON.stringify(e, null, 2));
   }
 };
 
