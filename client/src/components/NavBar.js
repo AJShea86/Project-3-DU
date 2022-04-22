@@ -32,7 +32,7 @@ const NavBar = () => {
 						<Button href="/" color="inherit">
 							Home
 						</Button>
-						<Button color="inherit" onClick={Auth.logout}>
+						<Button href='/'color="inherit" onClick={Auth.logout}>
 							Logout
 						</Button>
 					</Toolbar>
