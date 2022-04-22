@@ -1,18 +1,19 @@
-import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import "./App.css";
-import Main from "./pages/Main";
-import Footer from "./components/Footer";
-import { setContext } from "@apollo/client/link/context";
-import React from "react";
-import {
-	ApolloClient,
-	InMemoryCache,
-	ApolloProvider,
-	createHttpLink,
+import NavBar from './components/NavBar';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import './App.css';
+import Main from './pages/Main';
+import Footer from './components/Footer';
+import { setContext } from '@apollo/client/link/context';
+import Matches from './pages/Matches';
+import React from 'react';
+import { 
+  ApolloClient, 
+  InMemoryCache, 
+  ApolloProvider,
+  createHttpLink,
 } from "@apollo/client";
 
 const httpLink = createHttpLink({
@@ -37,20 +38,24 @@ const client = new ApolloClient({
 });
 
 function App() {
-	return (
-		<ApolloProvider client={client}>
-			<Router>
-				<NavBar />
-				<Footer />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/register" element={<Register />} />
-					<Route path="/main" element={<Main />} />
-				</Routes>
-			</Router>
-		</ApolloProvider>
-	);
+  return (
+    <ApolloProvider client={client}>
+    <Router>
+      <NavBar />
+      <Footer />
+      <Routes>
+     
+       <Route path='/' element={<Home/>}/>
+       <Route path='/login' element={<Login/>}/>
+       <Route path='/register' element={<Register/>}/>
+       <Route path='/main' element={<Main/>}/>
+       <Route path='/matches' element={<Matches/>}/>
+
+
+      </Routes>
+   </Router>
+  </ApolloProvider>
+  );
 }
 
 export default App;
