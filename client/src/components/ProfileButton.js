@@ -14,7 +14,7 @@ const ProfileButton = () => {
       <PersonIcon  fontSize='large' className='header__icon' />
       </IconButton>
 
-      <IconButton>
+      <IconButton href='/matches'>
       <ForumIcon fontSize='large' className='header__icon'/>
       </IconButton>
 
