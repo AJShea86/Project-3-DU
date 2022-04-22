@@ -12,19 +12,55 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PetsIcon from '@mui/icons-material/Pets';
 
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import React from 'react'
+import { LOGIN } from '../utils/mutations';
+
+import Auth from '../utils/auth';
 
 
 const theme = createTheme();
  function LoginForm() {
+   const [email, setEmail] = useState(false)
+   const [password, setPassword] = useState(false)
+  const [formState, setFormState] = useState({
+    email: '',
+    password: '',
+  })
 
-const handleSubmit = (event) => {
+  const [addUser,{ error, data}] = useMutation(LOGIN)
+
+  const handleChange = (event) => {
+    const {email,name, value} = event.target
+    console.log(event.target.name)
+    console.log(formState)
+    setFormState({
+      ...formState,
+      [event.target.name]: value
+    })
+    if(email=== ''){
+      setEmail(true)
+      // setPassword(true)
+    }
+  }
+
+const handleSubmit = async (event) => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
   console.log({
     email: data.get('email'),
     password: data.get('password'),
   });
+  try {
+    const { data }  = await addUser({
+      variables: { ...formState },
+    });
+
+    Auth.login(data.addUser.token);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 return (
@@ -47,6 +83,7 @@ return (
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
+            error={email}
             margin="normal"
             required
             fullWidth
@@ -55,8 +92,12 @@ return (
             name="email"
             autoComplete="email"
             autoFocus
+            value={formState.email}
+            onChange={handleChange}
           />
-          <TextField
+
+           <TextField
+            error = {password}
             margin="normal"
             required
             fullWidth
@@ -64,7 +105,11 @@ return (
             label="Password"
             type="password"
             id="password"
+            helperText="Incorrect entry."
             autoComplete="current-password"
+            value={formState.password}
+            onChange={handleChange}
+
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
