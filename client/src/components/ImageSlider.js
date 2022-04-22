@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { GET_USERS } from "../utils/queries";
 import { Typography } from "@mui/material";
-import{ FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
+import PetsIcon from '@mui/icons-material/Pets';
 
 
  const ImageSlider = ({User}) => {
@@ -33,8 +33,8 @@ import{ FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 
   return (
     <section className="slider">
-       <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-      <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
+      <PetsIcon  className="right-arrow" onClick={nextSlide} fontSize='large'style={{verticalAlign:"middle", transform:'rotate(90deg)'}}/>
+      <PetsIcon  className="left-arrow" onClick={prevSlide} fontSize='large'style={{verticalAlign:"middle", transform:'rotate(270deg)'}}/>
 
       {users.map((User, index) => {
         console.log(users[1])
@@ -47,6 +47,12 @@ import{ FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
               <div>
                 <img src="./pic5.jpg" alt="dog images" className="image" />
                 <Card sx={{ maxWidth: 345 }}>
+                {/* <CardMedia
+                    component="img"
+                    alt="dog photo"
+                    height="140"
+                    image={'../pic5.jpg'}//need to put user pic here
+                  /> */}
                   <CardContent>
                     
                     <Typography gutterBottom variant="h5" component="div">
