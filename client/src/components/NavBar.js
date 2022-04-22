@@ -23,16 +23,23 @@ const NavBar = () => {
 							color="inherit"
 							aria-label="menu"
 							sx={{ mr: 2 }}
+							href="/"
 						>
 							<PetsIcon />
 						</IconButton>
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 							Fetch
 						</Typography>
-						<Button href="/" color="inherit">
-							Home
+						<Button href="/main" color="inherit">
+							Find New Matches
 						</Button>
-						<Button href='/'color="inherit" onClick={Auth.logout}>
+						<Button href="/profile" color="inherit">
+							Edit Profile
+						</Button>
+						<Button href="/matches" color="inherit">
+							View Matches
+						</Button>
+						<Button href="/" color="inherit" onClick={Auth.logout}>
 							Logout
 						</Button>
 					</Toolbar>

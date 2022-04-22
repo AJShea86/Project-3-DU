@@ -8,8 +8,8 @@ const resolvers = {
 			return await User.find();
 		},
 		getUser: async (parent, { _id }) => {
-			const user = await User.findById(_id)
-			return user
+			const user = await User.findById(_id);
+			return user;
 		},
 		me: async (parent, args, context) => {
 			if (context.user) {
@@ -23,14 +23,17 @@ const resolvers = {
 	},
 	Mutation: {
 		addUser: async (parent, { email, password }) => {
-			const user = await User.create({ email, password, name: '🐶 New User!' });
+			const user = await User.create({ email, password, name: "🐶 New Pet!" });
 			const token = signToken(user);
 
 			return { token, user };
 		},
-		updateUser: async(parent, {name, age, location, bio, _id}) => {
-			const user = await User.findOneAndUpdate({ _id }, { $set: { name, age, location, bio } })
-			return 'true';
+		updateUser: async (parent, { name, age, location, bio, _id }) => {
+			const user = await User.findOneAndUpdate(
+				{ _id },
+				{ $set: { name, age, location, bio } }
+			);
+			return "true";
 		},
 		login: async (parent, { email, password }) => {
 			const user = await User.findOne({ email });
