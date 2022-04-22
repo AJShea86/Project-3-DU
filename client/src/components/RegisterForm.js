@@ -12,22 +12,57 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import PetsIcon from "@mui/icons-material/Pets";
 
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
+
+// import {useHistory} from 'react-router-dom'
+
+import Auth from "../utils/auth";
 
 const theme = createTheme();
 function LoginForm() {
-  const handleSubmit = (event) => {
+  // const history = useHistory()
+  const [formState, setFormState] = useState({
+    email: '',
+    password: '',
+  })
+
+  const [addUser,{ error, data}] = useMutation(ADD_USER)
+
+  const handleChange = (event) => {
+    const {email, value} = event.target
+    console.log(event.target.name)
+    console.log(formState)
+    setFormState({
+      ...formState,
+      [event.target.name]: value
+    })
+  }
+
+
+
+
+
+
+  const handleSubmit = async (event) => {
       
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-        firstName: data.get('firstName'),
-        lastName: data.get('lastName'),
-        location: data.get('location'),
-         email: data.get("email"),
+        email: data.get("email"),
         password: data.get("password"),
 
     });
+    try {
+      const { data }  = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -94,6 +129,8 @@ function LoginForm() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={formState.email}
+              onChange={handleChange}
               
             />
 
@@ -106,6 +143,8 @@ function LoginForm() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={formState.password}
+              onChange={handleChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
