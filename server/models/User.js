@@ -14,7 +14,7 @@ const userSchema = new Schema({
 	},
 	name: {
 		type: String,
-		required: true,
+		// required: true,
 		trim: true,
 	},
 	age: {
@@ -22,7 +22,7 @@ const userSchema = new Schema({
 	},
 	location: {
 		type: String,
-		required: true,
+		// required: true,
 	},
 	pic: {
 		type: String,

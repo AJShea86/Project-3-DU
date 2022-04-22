@@ -15,17 +15,18 @@ const resolvers = {
 				return userData;
 			}
 			throw new AuthenticationError("You are Not logged in!");
-		}
-		
+		},
 	},
 	Mutation: {
-		addUser: async(parent, { email, password}) => {
-			const user = await User.create({email, password});
+		addUser: async (parent, { email, password }) => {
+			const user = await User.create({ email, password });
 			const token = signToken(user);
-			return { token, user }
+
+			return { token, user };
 		},
 		login: async (parent, { email, password }) => {
 			const user = await User.findOne({ email });
+
 			if (!user) {
 				throw new AuthenticationError(
 					"No profile found. Try another email or sign up!"
