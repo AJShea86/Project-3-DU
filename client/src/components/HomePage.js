@@ -21,7 +21,7 @@ const HomePage = () => {
           marginBottom: '450px',
           fontSize: "50px",
         }}
-        strings={["Welcome to Fetch !"]}
+        strings={["Wanna Play Fetch?"]}
         typeSpeed={40}
       />
     </div>
