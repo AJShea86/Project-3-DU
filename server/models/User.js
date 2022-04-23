@@ -30,6 +30,7 @@ const userSchema = new Schema({
 	bio: {
 		type: String,
 	},
+	likes: [],
 });
 
 // pre-save middleware to create password

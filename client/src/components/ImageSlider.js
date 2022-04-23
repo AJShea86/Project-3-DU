@@ -27,6 +27,11 @@ const ImageSlider = () => {
       setCurrent(current === 0 ? length - 1 : current - 1);
     };
 
+    const handleLike = (user) => {
+      console.log(user)
+      
+    }
+
 
     // if (!Array.isArray(users) || users.length <= 0) {
     //   return null;
@@ -70,7 +75,7 @@ const ImageSlider = () => {
 
                   </CardContent>
                   <CardActions>
-                    <Button id="chatButton" size="large">
+                    <Button id="chatButton" size="large" onClick={()=> handleLike(User)} >
                       Like
                     </Button>
                   </CardActions>

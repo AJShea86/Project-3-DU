@@ -30,3 +30,14 @@ export const UPDATE_USER = gql`
     }
   }
 `;
+
+export const LIKE_USER = gql`
+  mutation likeUser($id: String!) {
+    likeUser(id: $id) {
+      token
+      user {
+        id
+      }
+    }
+  }
+`;
