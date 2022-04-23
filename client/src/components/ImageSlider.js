@@ -23,7 +23,8 @@ const ImageSlider = () => {
   }, [users, error, loading])
 
     const [current, setCurrent] = useState(0);
-    const  [length, setLength] = useState(0);
+    // const  [length, setLength] = useState(0);
+    const length = users.users.length
 
     const nextSlide = () => {
      setCurrent(current === length - 1 ? 0 : current + 1);
@@ -32,6 +33,7 @@ const ImageSlider = () => {
     const prevSlide = () => {
       setCurrent(current === 0 ? length - 1 : current - 1);
     };
+
 
     const handleLike = async (user) => {
       console.log(user)
