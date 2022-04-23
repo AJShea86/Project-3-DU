@@ -53,6 +53,11 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		},
+		likeUser: async (parent, { likedId }) => {
+			console.log("hello")
+			const likedUser = await User.findById({id: likedId})
+			return true
+		}
 		// removeUser: async (parent, args, context) => {
 		// 	if (context.user) {
 		// 		const updatedUser = await User.findOneByIdAndDelete(context.user._id);

@@ -9,7 +9,9 @@ import Footer from './components/Footer';
 import { setContext } from '@apollo/client/link/context';
 import Matches from './pages/Matches';
 import Profile from "./pages/Profile"
-import React from 'react';
+import Auth from './utils/auth'
+import NotLoggedIn from './components/NotLoggedIn';
+import React, {useState, useEffect} from 'react';
 import { 
   ApolloClient, 
   InMemoryCache, 
@@ -39,8 +41,16 @@ const client = new ApolloClient({
 });
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
+  const [loggedin, setLoggedIn] = useState(false)
+  useEffect(()=>{
+    if(Auth.loggedIn())setLoggedIn(true) 
+
+  }, [])
+
+
+
+  if(!loggedin) {
+    return   (  <ApolloProvider client={client}>
     <Router>
       <NavBar />
       <Footer />
@@ -49,6 +59,26 @@ function App() {
        <Route path='/' element={<Home/>}/>
        <Route path='/login' element={<Login/>}/>
        <Route path='/register' element={<Register/>}/>
+       <Route path='/main' element={<NotLoggedIn/>}/>
+       <Route path ='/profile' element={<NotLoggedIn/>}/>
+       <Route path='/matches' element={<NotLoggedIn/>}/>
+
+
+
+      </Routes>
+   </Router>
+  </ApolloProvider>
+  );
+
+  }
+
+  return (
+    <ApolloProvider client={client}>
+    <Router>
+      <NavBar />
+      <Footer />
+      <Routes>
+     
        <Route path='/main' element={<Main/>}/>
        <Route path ='/profile' element={<Profile/>}/>
        <Route path='/matches' element={<Matches/>}/>
