@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: hotpink;
   }
   
   .image{
@@ -13,7 +14,11 @@
     
   
   }
-  
+  .profileColor{
+    background-color: hotpink;
+
+
+  }
   .right-arrow{
     position: absolute;
     top: 50%;
