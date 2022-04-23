@@ -18,9 +18,11 @@ import { useMutation, useQuery } from "@apollo/client";
 import { UPDATE_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { GET_USER } from "../utils/queries";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 function ProfileForm() {
+  const navigate = useNavigate()
   const [selectedFile, setSelectedFile] = useState(null);
   const [formState, setFormState] = useState({
     name: '',
@@ -83,6 +85,7 @@ function ProfileForm() {
       bio: userBio
      }
     })
+    navigate('/main')
   };
   const fileSelectedHandler = (event) => setSelectedFile(event.target.files[0]);
 
@@ -163,7 +166,6 @@ function ProfileForm() {
             </div>
 
             <Button
-              href='/main'
               type="submit"
               fullWidth
               variant="contained"
