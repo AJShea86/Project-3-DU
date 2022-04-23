@@ -21,163 +21,181 @@ import { GET_USER } from "../utils/queries";
 import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
+
 function ProfileForm() {
-  const navigate = useNavigate()
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [formState, setFormState] = useState({
-    name: '',
-    age: '',
-    location: '',
-    bio: '',
-  })
+	const navigate = useNavigate();
+	const [selectedFile, setSelectedFile] = useState(null);
+	const [formState, setFormState] = useState({
+		name: "",
+		age: "",
+		location: "",
+		bio: "",
+	});
 
-  const { loading, error: userError, data: userData} = useQuery(GET_USER, {
-    variables: { _id: Auth.getCurrentUser() }
-  })
+	const {
+		loading,
+		error: userError,
+		data: userData,
+	} = useQuery(GET_USER, {
+		variables: { _id: Auth.getCurrentUser() },
+	});
 
-  const [userName, setUserName] = useState('')
-  const [userAge, setUserAge] = useState('')
-  const [userLocation, setUserLocation] =useState('')
-  const [userBio, setUserBio] =useState('')
+	const [userName, setUserName] = useState("");
+	const [userAge, setUserAge] = useState("");
+	const [userLocation, setUserLocation] = useState("");
+	const [userBio, setUserBio] = useState("");
 
-  useEffect(() => {
-    setUserName(userData?.getUser?.name)
-    setUserAge(userData?.getUser?.age)
-  }, [userData])
+	useEffect(() => {
+		setUserName(userData?.getUser?.name);
+		setUserAge(userData?.getUser?.age);
+		setUserLocation(userData?.getUser?.location);
+		setUserBio(userData?.getUser?.bio);
+	}, [userData]);
 
-  console.log(userData)
-  const [updateUser, { error, data}] = useMutation(UPDATE_USER)
+	console.log(userData);
+	const [updateUser, { error, data }] = useMutation(UPDATE_USER);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get("name"),
-      age: data.get("age"),
-      location: data.get("location"),
-      bio: data.get("bio"),
-      image: selectedFile,
-    });
-    const formData = {
-      name: data.get("name"),
-      age: data.get("age"),
-      location: data.get("location"),
-      bio: data.get("bio"),
-      image: selectedFile,
-    }
-    setFormState({
-      ...formState,
-      ...formData
-    })
-    console.log({
-      _id: Auth.getCurrentUser(),
-      name: userName,
-      age: userAge,
-      location: userLocation,
-      bio: userBio
-    })
-    updateUser({
-     variables: {
-      _id: Auth.getCurrentUser(),
-      name: userName,
-      age: userAge,
-      location: userLocation,
-      bio: userBio
-     }
-    })
-    navigate('/main')
-  };
-  const fileSelectedHandler = (event) => setSelectedFile(event.target.files[0]);
+	const handleSubmit = (event) => {
+		event.preventDefault();
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        { loading ? <p>Loading...soryy :(</p> : <Box
-          sx={{
-            marginTop: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "black" }}>
-            <PetsIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Profile
-          </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="Name"
-              name="name"
-              autoComplete="name"
-              autoFocus
-            />
-            <TextField
-              value={userAge}
-              onChange={(e) => setUserAge(e.target.value)}
-              margin="normal"
-              required
-              fullWidth
-              id="age"
-              label="Age"
-              name="age"
-              autoComplete="age"
-            />
+		const data = new FormData(event.currentTarget);
 
-            <TextField
-            value={userLocation}
-            onChange={(e) => setUserLocation(e.target.value)}
-              margin="normal"
-              required
-              fullWidth
-              id="location"
-              label="Location"
-              name="location"
-              autoComplete="location"
-            />
-            <TextArea
-              value={userBio}
-              onChange={(e) => setUserBio(e.target.value)}
-              minRows={6}
-              className="textArea"
-              margin="normal"
-              required
-              id="bio"
-              label="Biography"
-              placeholder="Biography"
-              name="bio"
-              autoComplete="bio"
-            />
-            <div className="">
-              <input type="file" onChange={fileSelectedHandler} />
-            </div>
+		console.log({
+			name: data.get("name"),
+			age: data.get("age"),
+			location: data.get("location"),
+			bio: data.get("bio"),
+			image: selectedFile,
+		});
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 1, mb: 3 }}
-            >
-              Submit
-            </Button>
-          </Box>
-        </Box> }
-      </Container>
-    </ThemeProvider>
-  );
+		const formData = {
+			name: data.get("name"),
+			age: data.get("age"),
+			location: data.get("location"),
+			bio: data.get("bio"),
+			image: selectedFile,
+		};
+
+		setFormState({
+			...formState,
+			...formData,
+		});
+
+		console.log({
+			_id: Auth.getCurrentUser(),
+			name: userName,
+			age: userAge,
+			location: userLocation,
+			bio: userBio,
+		});
+
+		updateUser({
+			variables: {
+				_id: Auth.getCurrentUser(),
+				name: userName,
+				age: userAge,
+				location: userLocation,
+				bio: userBio,
+			},
+		});
+
+		navigate("/main");
+	};
+	const fileSelectedHandler = (event) => setSelectedFile(event.target.files[0]);
+
+	return (
+		<ThemeProvider theme={theme}>
+			<Container component="main" maxWidth="xs">
+				<CssBaseline />
+				{loading ? (
+					<p>Loading...sorry :(</p>
+				) : (
+					<Box
+						sx={{
+							marginTop: 1,
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+						}}
+					>
+						<Avatar sx={{ m: 1, bgcolor: "black" }}>
+							<PetsIcon />
+						</Avatar>
+						<Typography component="h1" variant="h5">
+							Profile
+						</Typography>
+						<Box
+							component="form"
+							onSubmit={handleSubmit}
+							noValidate
+							sx={{ mt: 1 }}
+						>
+							<TextField
+								value={userName}
+								onChange={(e) => setUserName(e.target.value)}
+								margin="normal"
+								required
+								fullWidth
+								id="name"
+								label="Name"
+								name="name"
+								autoComplete="name"
+								autoFocus
+							/>
+							<TextField
+								value={userAge}
+								onChange={(e) => setUserAge(e.target.value)}
+								margin="normal"
+								required
+								fullWidth
+								id="age"
+								label="Age"
+								name="age"
+								autoComplete="age"
+							/>
+
+							<TextField
+								value={userLocation}
+								onChange={(e) => setUserLocation(e.target.value)}
+								margin="normal"
+								required
+								fullWidth
+								id="location"
+								label="Location"
+								name="location"
+								autoComplete="location"
+							/>
+							<TextArea
+								value={userBio}
+								onChange={(e) => setUserBio(e.target.value)}
+								minRows={6}
+								className="textArea"
+								margin="normal"
+								required
+								id="bio"
+								label="Biography"
+								placeholder="Biography"
+								name="bio"
+								autoComplete="bio"
+							/>
+							<div className="">
+								<input type="file" onChange={fileSelectedHandler} />
+							</div>
+
+							<Button
+								type="submit"
+								fullWidth
+								variant="contained"
+								sx={{ mt: 1, mb: 3 }}
+							>
+								Submit
+							</Button>
+						</Box>
+					</Box>
+				)}
+			</Container>
+		</ThemeProvider>
+	);
 }
 
 export default ProfileForm;
