@@ -9,7 +9,8 @@ import PetsIcon from "@mui/icons-material/Pets";
 import Auth from "../utils/auth";
 import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-
+import PersonIcon from "@mui/icons-material/Person";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 const NavBar = () => {
   const [loggedIn, setLoggedIn] = useState(Auth.loggedIn());
 
@@ -28,12 +29,50 @@ const NavBar = () => {
             >
               <PetsIcon />
             </IconButton>
+
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Fetch
             </Typography>
-            <Button href="/main" color="inherit">
+            <IconButton href="/profile">
+              <PersonIcon color="white" fontSize="large" />
+            </IconButton>
+
+            {/* <Button href="/main" color="inherit">
               Find New Matches
-            </Button>
+            </Button> */}
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              href="/profile"
+            >
+              <PersonIcon />
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              href="/matches"
+            >
+              <PeopleAltIcon />
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              href="/main"
+            >
+              <SearchIcon />
+            </IconButton>
+
+
+
             {/* <IconButton href="/profile">
               <SearchIcon fontSize="large" className="header__icon" />
             </IconButton> */}
