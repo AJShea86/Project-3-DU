@@ -23,6 +23,22 @@ if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '../client/build')));
   }
   
+  app.get('/matches/:myId', async (req, res) => {
+	console.log(req.params)
+	const myUser = await User.findById(req.params.myId)
+	// const myMatches = []
+
+	const promises = myUser.matches.map(async id=> {
+		const matchedUser = await User.findById(id)
+		console.log(matchedUser.name)
+		return matchedUser;
+
+	})
+	const myMatches = await Promise.all(promises);
+
+	console.log(myMatches.length)
+	res.json(myMatches)
+})
   app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
@@ -64,6 +80,7 @@ app.post('/user-like', async (req, res) => {
 
   });
   
+
 
 
 // db.once("open", () => {
