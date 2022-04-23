@@ -15,6 +15,8 @@ import PetsIcon from "@mui/icons-material/Pets";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
+import { Card } from '@mui/material';
+import { CardContent } from '@mui/material'
 
 // import {useHistory} from 'react-router-dom'
 
@@ -68,7 +70,8 @@ function LoginForm() {
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
+      <Card style={{maxWidth: 450, margin: '2rem auto',padding: '20px 5px'}}>
+      <CardContent>
         <Box
           sx={{
             marginTop: 1,
@@ -172,6 +175,8 @@ function LoginForm() {
             </Grid>
           </Box>
         </Box>
+        </CardContent>
+        </Card>
       </Container>
     </ThemeProvider>
   );
