@@ -122,6 +122,7 @@ function LoginForm() {
 
             <TextField
               margin="normal"
+              type='email'
               required
               fullWidth
               id="email"
@@ -138,7 +139,7 @@ function LoginForm() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Paws-word"
               type="password"
               id="password"
               autoComplete="current-password"

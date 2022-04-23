@@ -85,6 +85,7 @@ return (
           <TextField
             error={email}
             margin="normal"
+            type='email'
             required
             fullWidth
             id="email"
@@ -102,7 +103,7 @@ return (
             required
             fullWidth
             name="password"
-            label="Password"
+            label="Paws-word"
             type="password"
             id="password"
             helperText="Incorrect entry."
