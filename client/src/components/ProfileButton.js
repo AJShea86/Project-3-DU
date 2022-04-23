@@ -2,7 +2,7 @@ import React from 'react'
 import '../Header.css'
 import PersonIcon from '@mui/icons-material/Person';
 import { IconButton } from '@mui/material';
-import ForumIcon from '@mui/icons-material/Forum'
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 
 const ProfileButton = () => {
@@ -15,7 +15,7 @@ const ProfileButton = () => {
       </IconButton>
 
       <IconButton href='/matches'>
-      <ForumIcon fontSize='large' className='header__icon'/>
+      <PeopleAltIcon fontSize='large' className='header__icon'/>
       </IconButton>
 
 

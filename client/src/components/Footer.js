@@ -11,7 +11,9 @@ const Footer = () => {
  width: '100%',
  bottom: '0',
  color: 'white',
- fontSize: '25px'
+ fontSize: '25px',
+ zIndex: '3'
+
   }
  
   return (
