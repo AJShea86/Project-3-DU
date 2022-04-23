@@ -11,15 +11,15 @@ const resolvers = {
 			const user = await User.findById(_id);
 			return user;
 		},
-		me: async (parent, args, context) => {
-			if (context.user) {
-				const userData = await User.findOne({ _id: context.user.id }).select(
-					"__v -password"
-				);
-				return userData;
-			}
-			throw new AuthenticationError("You are Not logged in!");
-		},
+		// me: async (parent, args, context) => {
+		// 	if (context.user) {
+		// 		const userData = await User.findOne({ _id: context.user.id }).select(
+		// 			"__v -password"
+		// 		);
+		// 		return userData;
+		// 	}
+		// 	throw new AuthenticationError("You are Not logged in!");
+		// },
 	},
 	Mutation: {
 		addUser: async (parent, { email, password }) => {
@@ -54,10 +54,10 @@ const resolvers = {
 			return { token, user };
 		},
 		likeUser: async (parent, { likedId }) => {
-			console.log("hello")
-			const likedUser = await User.findById({id: likedId})
-			return true
-		}
+			console.log("hello");
+			const likedUser = await User.findById({ id: likedId });
+			return true;
+		},
 		// removeUser: async (parent, args, context) => {
 		// 	if (context.user) {
 		// 		const updatedUser = await User.findOneByIdAndDelete(context.user._id);
