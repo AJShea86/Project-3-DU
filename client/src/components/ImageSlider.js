@@ -24,7 +24,7 @@ const ImageSlider = () => {
 
     const [current, setCurrent] = useState(0);
     // const  [length, setLength] = useState(0);
-    const length = users.users.length
+    const length = users?.users?.length
 
     const nextSlide = () => {
      setCurrent(current === length - 1 ? 0 : current + 1);
