@@ -3,8 +3,10 @@ const db = require("./config/connect");
 const { ApolloServer } = require('apollo-server-express');
 const path = require("path");
 const { authMiddleware } = require('./utils/auth');
-
+const { Schema, model } = require("mongoose");
 const { typeDefs, resolvers } = require('./schemas');
+const { User } = require("./models");
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -21,6 +23,22 @@ if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '../client/build')));
   }
   
+  app.get('/matches/:myId', async (req, res) => {
+	console.log(req.params)
+	const myUser = await User.findById(req.params.myId)
+	// const myMatches = []
+
+	const promises = myUser.matches.map(async id=> {
+		const matchedUser = await User.findById(id)
+		console.log(matchedUser.name)
+		return matchedUser;
+
+	})
+	const myMatches = await Promise.all(promises);
+
+	console.log(myMatches.length)
+	res.json(myMatches)
+})
   app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
@@ -38,6 +56,32 @@ const startApolloServer = async (typeDefs, resolvers) => {
 		});
 	});
 };
+
+app.post('/user-like', async (req, res) => {
+	const likedUser = await User.findById(req.body.id)
+	const myUser = await User.findById(req.body.myId)
+	myUser.likes.push(likedUser)
+	likedUser.likes.map((user, i)=>{
+		console.log(i, user._id, myUser._id, user._id.equals(myUser._id ) )
+		if(user._id.equals(myUser._id ))
+		{
+			// means we have a match
+			myUser.matches.push(likedUser._id)
+			likedUser.matches.push(myUser._id)
+		}
+	})
+	myUser.save()
+	likedUser.save()
+	
+
+	// console.log(likedUser)
+	// console.log(myUser)
+	res.sendStatus(200);
+
+  });
+  
+
+
 
 // db.once("open", () => {
 // 	app.listen(PORT, () => {

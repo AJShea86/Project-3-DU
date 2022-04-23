@@ -32,11 +32,10 @@ export const UPDATE_USER = gql`
 `;
 
 export const LIKE_USER = gql`
-  mutation likeUser($id: String!) {
-    likeUser(id: $id) {
-      token
+  mutation likeUser($user: String!) {
+    likeUser(user: $user) {
       user {
-        id
+        user
       }
     }
   }

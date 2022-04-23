@@ -7,10 +7,16 @@ import { useQuery } from "@apollo/client";
 import { GET_USERS } from "../utils/queries";
 import { Typography } from "@mui/material";
 import PetsIcon from '@mui/icons-material/Pets';
+import { useMutation } from "@apollo/client";
+import { LIKE_USER } from "../utils/mutations";
+import Axios from 'axios';
+
 
 
 const ImageSlider = () => {
   const { loading, data:users, error } = useQuery(GET_USERS);
+  const [likeUser,{ errorUser, data}] = useMutation(LIKE_USER)
+
   useEffect(()=> {
     console.log(users);
     console.log(error, loading)
@@ -27,8 +33,21 @@ const ImageSlider = () => {
       setCurrent(current === 0 ? length - 1 : current - 1);
     };
 
-    const handleLike = (user) => {
+    const handleLike = async (user) => {
       console.log(user)
+      // try {
+      //   const { data }  = await likeUser({
+      //     variables: { user: user },
+      //   });
+  
+      //   // Auth.login(data.addUser.token, data.addUser.user._id);
+      // } catch (e) {
+      //   console.error(e);
+      // }
+      const currentUserId= localStorage.getItem('current_user_id')
+      Axios.post('/user-like', {id: user._id, myId: currentUserId}).then(res=> {console.log(res)})
+      .catch(err => console.log(err))
+  
       
     }
 
