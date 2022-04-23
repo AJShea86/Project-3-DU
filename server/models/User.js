@@ -31,6 +31,7 @@ const userSchema = new Schema({
 		type: String,
 	},
 	likes: [],
+	matches: []
 });
 
 // pre-save middleware to create password

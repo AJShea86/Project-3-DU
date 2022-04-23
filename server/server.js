@@ -3,8 +3,10 @@ const db = require("./config/connect");
 const { ApolloServer } = require('apollo-server-express');
 const path = require("path");
 const { authMiddleware } = require('./utils/auth');
-
+const { Schema, model } = require("mongoose");
 const { typeDefs, resolvers } = require('./schemas');
+const { User } = require("./models");
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -38,6 +40,31 @@ const startApolloServer = async (typeDefs, resolvers) => {
 		});
 	});
 };
+
+app.post('/user-like', async (req, res) => {
+	const likedUser = await User.findById(req.body.id)
+	const myUser = await User.findById(req.body.myId)
+	myUser.likes.push(likedUser)
+	likedUser.likes.map((user, i)=>{
+		console.log(i, user._id, myUser._id, user._id.equals(myUser._id ) )
+		if(user._id.equals(myUser._id ))
+		{
+			// means we have a match
+			myUser.matches.push(likedUser._id)
+			likedUser.matches.push(myUser._id)
+		}
+	})
+	myUser.save()
+	likedUser.save()
+	
+
+	// console.log(likedUser)
+	// console.log(myUser)
+	res.sendStatus(200);
+
+  });
+  
+
 
 // db.once("open", () => {
 // 	app.listen(PORT, () => {
