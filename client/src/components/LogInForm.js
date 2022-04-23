@@ -18,6 +18,8 @@ import React from 'react'
 import { LOGIN } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import { Card } from '@mui/material';
+import { CardContent } from '@mui/material'
 
 
 const theme = createTheme();
@@ -66,7 +68,8 @@ console.log(data)
 return (
   <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
+      <Card style={{maxWidth: 450, margin: '2rem auto',padding: '20px 5px'}}>
+      <CardContent>
       <Box
         sx={{
           marginTop: 8,
@@ -137,6 +140,8 @@ return (
           </Grid>
         </Box>
       </Box>
+      </CardContent>
+      </Card>
     </Container>
   </ThemeProvider>
   )

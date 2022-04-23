@@ -19,6 +19,8 @@ import { UPDATE_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { GET_USER } from "../utils/queries";
 import { useNavigate } from "react-router-dom";
+import { Card } from '@mui/material';
+import { CardContent } from '@mui/material'
 
 const theme = createTheme();
 
@@ -106,7 +108,8 @@ function ProfileForm() {
 	return (
 		<ThemeProvider theme={theme}>
 			<Container component="main" maxWidth="xs">
-				<CssBaseline />
+			<Card style={{maxWidth: 450, margin: '1rem auto',padding: '20px 5px',}}>
+			<CardContent>
 				{loading ? (
 					<p>Loading...sorry :(</p>
 				) : (
@@ -193,6 +196,8 @@ function ProfileForm() {
 						</Box>
 					</Box>
 				)}
+				</CardContent>
+				</Card>
 			</Container>
 		</ThemeProvider>
 	);
