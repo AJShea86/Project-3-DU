@@ -106,7 +106,6 @@ return (
             label="Paws-word"
             type="password"
             id="password"
-            helperText="Incorrect entry."
             autoComplete="current-password"
             value={formState.password}
             onChange={handleChange}
