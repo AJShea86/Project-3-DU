@@ -10,6 +10,7 @@ import PetsIcon from "@mui/icons-material/Pets";
 import { useMutation } from "@apollo/client";
 import { LIKE_USER } from "../utils/mutations";
 import Axios from "axios";
+import { Box } from "@mui/system";
 
 const ImageSlider = () => {
 	const { loading, data: users, error } = useQuery(GET_USERS);
@@ -58,18 +59,24 @@ const ImageSlider = () => {
 
 	return (
 		<section className="slider">
+			<Box className="iconrepper">
+				<Box className='iconLeft'>
 			<PetsIcon
-				className="right-arrow"
+				className="left-arrow"
 				onClick={nextSlide}
 				fontSize="large"
 				style={{ verticalAlign: "middle", transform: "rotate(90deg)" }}
 			/>
+			</Box>
+			<Box className='iconRight'>
 			<PetsIcon
-				className="left-arrow"
+				className="right-arrow"
 				onClick={prevSlide}
 				fontSize="large"
 				style={{ verticalAlign: "middle", transform: "rotate(270deg)" }}
 			/>
+			</Box>
+			</Box>
 
 			{users?.users.map((User, index) => {
 				return (
