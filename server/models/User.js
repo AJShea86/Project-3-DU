@@ -18,7 +18,7 @@ const userSchema = new Schema({
 		trim: true,
 	},
 	age: {
-		type: Number,
+		type: String,
 	},
 	location: {
 		type: String,
@@ -31,7 +31,7 @@ const userSchema = new Schema({
 		type: String,
 	},
 	likes: [],
-	matches: []
+	matches: [],
 });
 
 // pre-save middleware to create password
