@@ -22,8 +22,10 @@ const MatchesPage = () => {
 			{matches.map((match) => {
 				return (
 					<div>
-						<h1>{match.name}</h1>
-						<Card body>
+						<h1>Matches</h1>
+						<Card body style={{width: '200px'}} >
+						<h2>{match.name}</h2>
+
 							<h3>Age: {match.age}</h3>
 							<h3>Location: {match.location}</h3>
 							<p>Bio: {match.bio}</p>
