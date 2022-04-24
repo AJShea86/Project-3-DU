@@ -23,12 +23,12 @@ const MatchesPage = () => {
 				return (
 					<div>
 						<h1>Matches</h1>
-						<Card body style={{width: '200px'}} >
-						<h2>{match.name}</h2>
+						<Card style={{ width: "250px", padding: "5px 10px 10px 20px" }}>
+							<h2>{match.name}</h2>
 
-							<h3>Age: {match.age}</h3>
-							<h3>Location: {match.location}</h3>
-							<p>Bio: {match.bio}</p>
+							<h4>Age: {match.age}</h4>
+							<h4>{match.location}</h4>
+							<p>{match.bio}</p>
 						</Card>
 					</div>
 				);
