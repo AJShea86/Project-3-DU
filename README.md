@@ -14,7 +14,7 @@
 
 ## Description
 
-Fetch is a social networking website for pets! Whether your furry friend is looking for love or just a playdate, Fetch connects you to the perfect mate to share your toys with.
+Fetch is a social networking website for pets! Whether your furry friend is looking for love or just a playdate, Fetch connects you to the paw-fect mate to share your toys with.
 
 ## Usage
 
