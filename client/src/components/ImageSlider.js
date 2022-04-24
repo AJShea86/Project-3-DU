@@ -60,7 +60,7 @@ const ImageSlider = () => {
 	return (
 		<section className="slider">
 			<Box className="iconrepper">
-				<Box className='iconLeft'>
+				<Box className='iconRight'>
 			<PetsIcon
 				className="left-arrow"
 				onClick={nextSlide}
@@ -68,7 +68,7 @@ const ImageSlider = () => {
 				style={{ verticalAlign: "middle", transform: "rotate(90deg)" }}
 			/>
 			</Box>
-			<Box className='iconRight'>
+			<Box className='iconLeft'>
 			<PetsIcon
 				className="right-arrow"
 				onClick={prevSlide}
